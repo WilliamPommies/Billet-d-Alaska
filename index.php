@@ -49,6 +49,6 @@
 
 require('Model/model.php');
 
-$req = getChapters();
+$chapters = getChapters();
 
 require('view/chapter_index.php');

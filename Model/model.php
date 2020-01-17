@@ -12,9 +12,9 @@ function getChapters()
         die('Erreur : '.$e->getMessage());
     }
 
-    $req = $bdd->query('SELECT id, title, content FROM articles ORDER BY id DESC');
+    $chapters = $bdd->query('SELECT id, title, content FROM articles ORDER BY id DESC');
 
-    return $req;
+    return $chapters;
 
 }
 
@@ -29,7 +29,7 @@ function getComments()
         die('Erreur : '.$e->getMessage());
     }
 
-    $req = $bdd->query('SELECT id, username, comment FROM commentaires ORDER BY id DESC');
+    $comments = $bdd->query('SELECT id, username, comment FROM commentaires ORDER BY id DESC');
 
-    return $req;
+    return $comments;
 }

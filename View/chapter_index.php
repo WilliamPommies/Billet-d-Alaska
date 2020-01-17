@@ -12,25 +12,25 @@
  
         
         <?php
-        while ($donnees = $req->fetch())
+        while ($data = $chapters->fetch())
         {
         ?>
         <div class="news">
-            <a href="/chapitres/<?php $donnees['id'] ?>">
+            <a href="/chapitres/<?php $data['id'] ?>">
                 <h3>
-                    <?php echo htmlspecialchars($donnees['title']); ?>
+                    <?php echo htmlspecialchars($data['title']); ?>
                 </h3>
             </a>
             <p>
                 aperçu : <?php
-                echo($donnees['content']);
+                echo($data['content']);
                 ?>
             </p>
             <em><a href="#">Commentaires</a></em>
         </div>
         <?php
         }
-        $req->closeCursor();
+        $chapters->closeCursor();
         ?>
     </body>
 </html>
