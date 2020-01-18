@@ -12,25 +12,25 @@
  
         
         <?php
-        while ($data = $chapters->fetch())
+        while ($chapters)
         {
-        ?>
-        <div class="news">
-            <a href="/chapitres/<?php $data['id'] ?>">
-                <h3>
-                    <?php echo htmlspecialchars($data['title']); ?>
-                </h3>
-            </a>
-            <p>
-                aperçu : <?php
-                echo($data['content']);
-                ?>
-            </p>
-            <em><a href="#">Commentaires</a></em>
-        </div>
-        <?php
+            ?>
+            <div class="news">
+                <a href="view/article.php">
+                    <h3>
+                        <?php echo htmlspecialchars($data['title']); ?>
+                    </h3>
+                </a>
+                <p>
+                    aperçu : <?php
+                    echo($data['content']);
+                    ?>
+                </p>
+                <em><a href="view/comments.php">Commentaires</a></em>
+            </div>
+            <?php
         }
-        $chapters->closeCursor();
+    
         ?>
     </body>
 </html>

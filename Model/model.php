@@ -1,35 +1,33 @@
 <?php 
 
-
-function getChapters()
+abstract class Model
 {
-    try
-    {
-        $bdd = new PDO('mysql:host=localhost;dbname=blog;charset=utf8', 'root', '');
-    }
-    catch(Exception $e)
-    {
-        die('Erreur : '.$e->getMessage());
-    }
+    private static $_bdd;
 
-    $chapters = $bdd->query('SELECT id, title, content FROM articles ORDER BY id DESC');
+    private static function setBdd(){
+        self::$_bdd = new PDO('mysql:host=localhost; dbname=blog ;charset=utf8', 'root', '');
 
-    return $chapters;
-
-}
-
-function getComments()
-{
-    try
-    {
-        $bdd = new PDO('mysql:host=localhost;dbname=blog;charset=utf8', 'root', '');
-    }
-    catch(Exception $e)
-    {
-        die('Erreur : '.$e->getMessage());
+        self::$_bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING );
     }
 
-    $comments = $bdd->query('SELECT id, username, comment FROM commentaires ORDER BY id DESC');
+    protected function getBdd(){
+        if(self::$_bdd == null){
+            self::setBDD();
+            return self::$_bdd;
+        }
+    }
 
-    return $comments;
+    protected function getAll($table, $obj){
+        $this->getBdd();
+        $var = [];
+        $req = self::$_bdd->prepare('SELECT * FROM' . $table . 'ORDER BY id desc');
+        $req->execute();
+
+        while($data = $req->fetch(PDO::FETCH_ASSOC)){
+             $var = new $obj($data); 
+        }
+
+        return $var;
+        $req->closeCursor();
+    }
 }

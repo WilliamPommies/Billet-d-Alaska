@@ -1,27 +1,6 @@
 <?php
 
-// class DatabaseConnection {
-//     private $host;
-//     private $dbname;
-//     private $user;
-//     private $password;
 
-//     public $connection;
-
-//     public function __construct(array $config)
-//     {
-//         $this->host = $config['host'];
-//         $this->dbname = $config['dbname'];
-//         $this->user = $config['user'];
-//         $this->password = $config['password'];
-
-//         try {
-//             $this->connection = new PDO("mysql:host={$this->host};dbname={$this->dbname};charset=utf8", $this->user, $this->password);
-//         } catch (Exception $e) {
-//             die('Erreur : ' . $e->getMessage());
-//         }
-//     }
-// }
 
 // class ArticleRepository {
 //     private $databaseConnection;
@@ -47,8 +26,7 @@
 // var_dump($articleRepo->find(1));
 
 
-require('Model/model.php');
+require_once('Controller/Router.php');
 
-$chapters = getChapters();
-
-require('view/chapter_index.php');
+$router = new Router();
+$router->routePath();
