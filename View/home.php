@@ -12,18 +12,19 @@
  
         
         <?php
-        while ($results)
+        require "./Model/model.php";
+        while ($articleRepo)
         {
             ?>
             <div class="news">
                 <a href="view/article.php">
                     <h3>
-                        <?php echo htmlspecialchars($data['title']); ?>
+                        <?php echo htmlspecialchars($articleRepo['title']); ?>
                     </h3>
                 </a>
                 <p>
                     aperçu : <?php
-                    echo($data['content']);
+                    echo($articleRepo['content']);
                     ?>
                 </p>
                 <em><a href="view/comments.php">Commentaires</a></em>

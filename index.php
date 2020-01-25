@@ -42,13 +42,7 @@
 
 // $dbConfigFileContent = file_get_contents('./config/db.json');
 // $db = new DatabaseConnection(json_decode($dbConfigFileContent, TRUE));
-// $articleRepo = new ArticleRepository($db);
+// $articleRepo = new ArticleRepository($db); 
 
-// var_dump($articleRepo->find(1));
-
-
-require('Model/model.php');
-
-$req = getChapters();
-
-require('view/chapter_index.php');
+require "./Controller/Router.php";
+require "./Model/model.php";

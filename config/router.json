@@ -1,0 +1,5 @@
+{
+  "/": "./View/home.php",
+  "/test": "./View/test.php",
+  "/contacts" : "./View/contacts.php"
+}
